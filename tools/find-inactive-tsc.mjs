@@ -213,8 +213,11 @@ const tscMembersAtEnd = await getTscFromReadme();
 
 const startCommit =
   await runGitCommand(`git rev-list -1 --before '${SINCE}' origin/HEAD`);
+console.log(startCommit);
 await runGitCommand(`git checkout ${startCommit} -- README.md`);
 const tscMembersAtStart = await getTscFromReadme();
+console.log(tscMembersAtStart);
+process.exit(0);
 await runGitCommand('git reset HEAD README.md');
 await runGitCommand('git checkout -- README.md');
 
